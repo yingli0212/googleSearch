@@ -5,7 +5,7 @@
 
 import json
 from flask import Flask, request
-import authVerify
+import authverify
 import tParser_Post
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ def search():
     username = request.args.get("username")
     verifycode = request.args.get("verifycode")
     keyword = request.args.get("keyword")
-    if authVerify.google_verify_result(users[username], verifycode):
+    if authverify.google_verify_result(users[username], verifycode):
         # Authentication with username and verifycode
         filename = tParser_Post.searchresults(keyword)
         # call the search in google

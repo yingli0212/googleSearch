@@ -1,7 +1,7 @@
 import time
 import unittest
 import logging
-import authVerify
+import authverify
 
 
 class PythonOrgSearch(unittest.TestCase):
@@ -13,7 +13,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.verifycode = input()
         # Enter a valid verifycode
         users = {"admin": "7UG7ETJ43ORR332TYPNKD7QTPG3X5ZYQPFIVYTJ6B42A7GSGKP4BYYGLZLEKEKWE"}
-        if authVerify.google_verify_result(users["admin"], self.verifycode):
+        if authverify.google_verify_result(users["admin"], self.verifycode):
             msg = "Test ok."
         else:
             msg = "Test FAILED."
@@ -27,7 +27,7 @@ class PythonOrgSearch(unittest.TestCase):
         # Enter a valid verifycode
         users = {"admin": "7UG7ETJ43ORR332TYPNKD7QTPG3X5ZYQPFIVYTJ6B42A7GSGKP4BYYGLZLEKEKWE"}
         time.sleep(31)
-        if authVerify.google_verify_result(users["admin"], self.verifycode):
+        if authverify.google_verify_result(users["admin"], self.verifycode):
             msg = "Test FAILED."
         else:
             msg = "Test ok."
@@ -41,7 +41,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.verifycode = verifycode[:4]
         # enter part of a valid verifycode as new verifycode
         users = {"admin": "7UG7ETJ43ORR332TYPNKD7QTPG3X5ZYQPFIVYTJ6B42A7GSGKP4BYYGLZLEKEKWE"}
-        if authVerify.google_verify_result(users["admin"], self.verifycode):
+        if authverify.google_verify_result(users["admin"], self.verifycode):
             msg = "Test FAILED."
         else:
             msg = "Test ok."
