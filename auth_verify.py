@@ -16,4 +16,5 @@ def google_verify_result(secret_key, verifycode):
     result = t.verify(verifycode)
     # compare the given verifycode and generated One Time Password for t，return True in case matching
     msg = result if result is True else False
+
     return msg

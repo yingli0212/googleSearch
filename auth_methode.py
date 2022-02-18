@@ -34,9 +34,11 @@ def get_qrcode(secret_key, username):
         filepath_part = '../static' + os.sep + secret_key + '.png'
         img.save(filepath)
         # save the image of qrcode
+
         return True, filepath
     except Exception as e:
         traceback.print_exc()
+
         return False, None
 
 
@@ -45,6 +47,7 @@ def generate_gtoken():
     Generate a secret key
     """
     gtoken = pyotp.random_base32(64)  # generate secret key, can be saved in user table in database, 64 bits
+
     return gtoken
 
 

@@ -23,6 +23,7 @@ def searchresults(keyword):
     try:
         re = requests.get(url, params=kv, headers=headers)
         re.encoding = re.apparent_encoding
+
         if re.status_code != 200:
             # bad response from website
             raise Exception('Statuscode of google is:' + str(re.status_code))
@@ -48,9 +49,11 @@ def searchresults(keyword):
 
         filename = "result_getMethode_2.json"
         # define output file name
+
         with open(filename, "w") as outfile:
             json.dump(result, outfile)
             # write dictionary to json file
+
         return filename
 
     except Exception as e:

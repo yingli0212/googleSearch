@@ -28,12 +28,15 @@ def search():
     username = request.args.get("username")
     verifycode = request.args.get("verifycode")
     keyword = request.args.get("keyword")
+
     if auth_verify.google_verify_result(users[username], verifycode):
         # Authentication with username and verifycode
         filename = parser_post.searchresults(keyword)
         # call the search in google
+
         with open(filename) as f:
             dictionary = json.load(f)
+
         return dictionary
     else:
         return "Please check your username and verify code again!"
