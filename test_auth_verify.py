@@ -4,7 +4,7 @@ import logging
 import auth_verify
 
 
-class PythonOrgSearch(unittest.TestCase):
+class AuthVerifyTest(unittest.TestCase):
 
     def test_verifycode_valid(self):
         """
