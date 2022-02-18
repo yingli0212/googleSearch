@@ -4,9 +4,10 @@
 # ---------------------------------------------------------------
 
 import json
-from flask import Flask, request
+from flask import Flask, request, send_file
 import auth_verify
 import parser_post
+import os
 
 app = Flask(__name__)
 
@@ -33,11 +34,8 @@ def search():
         # Authentication with username and verifycode
         filename = parser_post.searchresults(keyword)
         # call the search in google
-
-        with open(filename) as f:
-            dictionary = json.load(f)
-
-        return dictionary
+        os.path.abspath(filename)
+        return "You can get your output file here: " + os.path.abspath(filename) + "\n"
     else:
         return "Please check your username and verify code again!"
 
