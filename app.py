@@ -23,19 +23,27 @@ def home():
     return "Welcome to Webservice googleSearch!\n"
 
 
-@app.route('/search', methods=['GET'])
+@app.route('/search', methods=['POST'])
 def search():
     """ Verify the login user and active the search on google website """
-    username = request.args.get("username")
-    verifycode = request.args.get("verifycode")
-    keyword = request.args.get("keyword")
+#    username = request.args.get("username")
+#    verifycode = request.args.get("verifycode")
+#    keyword = request.args.get("keyword")
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        verifycode = request.form.get('verifycode')
+        keyword = request.form.get('keyword')
 
     if auth_verify.google_verify_result(users[username], verifycode):
         # Authentication with username and verifycode
         filename = parser_post.searchresults(keyword)
         # call the search in google
-        os.path.abspath(filename)
-        return "You can get your output file here: " + os.path.abspath(filename) + "\n"
+        # os.path.abspath(filename)
+        io = open(filename, 'r')
+        result = json.load(io)
+        return result
+#        return "You can get your output file here: " + os.path.abspath(filename) + "\n"
     else:
         return "Please check your username and verify code again!"
 

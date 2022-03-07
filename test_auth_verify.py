@@ -1,6 +1,5 @@
 import time
 import unittest
-import logging
 import auth_verify
 
 
@@ -27,6 +26,7 @@ class AuthVerifyTest(unittest.TestCase):
         # Enter a valid verifycode
         users = {"admin": "7UG7ETJ43ORR332TYPNKD7QTPG3X5ZYQPFIVYTJ6B42A7GSGKP4BYYGLZLEKEKWE"}
         time.sleep(31)
+        # TOTP is valid here within 30 seconds
         if auth_verify.google_verify_result(users["admin"], self.verifycode):
             msg = "Test FAILED."
         else:
